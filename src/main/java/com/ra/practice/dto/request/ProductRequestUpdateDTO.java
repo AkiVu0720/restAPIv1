@@ -1,4 +1,4 @@
-package com.ra.practice.dto.response;
+package com.ra.practice.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,11 +9,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Data
-public class ProductResponseDTO {
+public class ProductRequestUpdateDTO {
     private String productId;
     private String productName;
     private float price;
-    private int quantity;
-    private  boolean status;
+    private boolean status;
     private int catalogId;
 }

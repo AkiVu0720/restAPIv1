@@ -9,11 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Data
-public class ProductRequestDTO {
+public class ProductRequestDeleteDTO {
     private String productId;
-    private String productName;
-    private float price;
-    private int quantity;
-    private  boolean status;
-    private int catalogId;
 }

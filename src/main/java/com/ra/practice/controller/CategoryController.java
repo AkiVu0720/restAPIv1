@@ -2,7 +2,7 @@ package com.ra.practice.controller;
 
 import com.ra.practice.dto.request.CategoryRequestDTO;
 import com.ra.practice.dto.response.CategoryResponseDTO;
-import com.ra.practice.dto.response.CategoryResponseDTOFull;
+import com.ra.practice.dto.response.CategoryResponseDTOAll;
 import com.ra.practice.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,12 +24,12 @@ public class CategoryController {
     }
     @PostMapping()
     public ResponseEntity<?> createCategory(@Validated @RequestBody CategoryRequestDTO category){
-        CategoryResponseDTOFull categoryDTO = categoryService.save(category);
+        CategoryResponseDTOAll categoryDTO = categoryService.save(category);
         return new ResponseEntity<>(categoryDTO,HttpStatus.CREATED);
     }
     @GetMapping("/{categoryId}")
     public ResponseEntity<?> findById(@PathVariable int categoryId){
-        CategoryResponseDTO categoryDTO = categoryService.findById(categoryId);
+        CategoryResponseDTO categoryDTO = categoryService.findResponseById(categoryId);
         return  new ResponseEntity<>(categoryDTO,HttpStatus.OK);
     }
     @DeleteMapping("/{categoryId}")
@@ -44,7 +44,7 @@ public class CategoryController {
     }
     @PutMapping("/{categoryId}")
     public ResponseEntity<?>updateCategory(@RequestBody CategoryRequestDTO categoryRequestDTO, @PathVariable int categoryId){
-        CategoryResponseDTOFull category = categoryService.update(categoryRequestDTO,categoryId);
+        CategoryResponseDTOAll category = categoryService.update(categoryRequestDTO,categoryId);
         return new ResponseEntity<>(category,HttpStatus.OK);
     }
 

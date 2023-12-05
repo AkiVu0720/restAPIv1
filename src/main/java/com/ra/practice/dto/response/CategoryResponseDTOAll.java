@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Data
-public class CategoryResponseDTOFull {
+public class CategoryResponseDTOAll {
     private  int catalogId;
     @NotNull(message = "Tên nhân viên không được null")
     private  String catalogName;

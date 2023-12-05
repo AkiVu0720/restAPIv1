@@ -2,7 +2,7 @@ package com.ra.practice.mapper;
 
 import com.ra.practice.dto.request.CategoryRequestDTO;
 import com.ra.practice.dto.response.CategoryResponseDTO;
-import com.ra.practice.dto.response.CategoryResponseDTOFull;
+import com.ra.practice.dto.response.CategoryResponseDTOAll;
 import com.ra.practice.model.CategoryModel;
 import org.springframework.stereotype.Component;
 
@@ -28,8 +28,8 @@ public class CategoryMapper implements GenericMapper<CategoryModel, CategoryRequ
                 .catalogStatus(categoryModel.isCatalogStatus())
                 .build();
     }
-    public CategoryResponseDTOFull toResponsev2(CategoryModel categoryModel) {
-        return CategoryResponseDTOFull.builder()
+    public CategoryResponseDTOAll toResponsev2(CategoryModel categoryModel) {
+        return CategoryResponseDTOAll.builder()
                 .catalogId(categoryModel.getCatalogId())
                 .catalogName(categoryModel.getCatalogName())
                 .descriptions(categoryModel.getDescriptions())

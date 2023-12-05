@@ -2,7 +2,7 @@ package com.ra.practice.serviceImp;
 
 import com.ra.practice.dto.request.CategoryRequestDTO;
 import com.ra.practice.dto.response.CategoryResponseDTO;
-import com.ra.practice.dto.response.CategoryResponseDTOFull;
+import com.ra.practice.dto.response.CategoryResponseDTOAll;
 import com.ra.practice.mapper.CategoryMapper;
 import com.ra.practice.model.CategoryModel;
 import com.ra.practice.repository.CategoryRepository;
@@ -25,7 +25,7 @@ public class CategoryServiceImp implements CategoryService {
     }
 
     @Override
-    public CategoryResponseDTO findById(int catalogId) {
+    public CategoryResponseDTO findResponseById(int catalogId) {
         Optional<CategoryModel> category = categoryRepository.findById(catalogId);
         if (category.isPresent()) {
             return categoryMapper.toResponse(category.get());
@@ -34,7 +34,12 @@ public class CategoryServiceImp implements CategoryService {
     }
 
     @Override
-    public CategoryResponseDTOFull save(CategoryRequestDTO categoryRequest) {
+    public CategoryModel findById(int catalogId) {
+        return categoryRepository.findById(catalogId).get();
+    }
+
+    @Override
+    public CategoryResponseDTOAll save(CategoryRequestDTO categoryRequest) {
         return categoryMapper.toResponsev2(categoryRepository.save(categoryMapper.toEntity(categoryRequest)));
     }
 
@@ -58,7 +63,7 @@ public class CategoryServiceImp implements CategoryService {
     }
 
     @Override
-    public CategoryResponseDTOFull update(CategoryRequestDTO categoryRequest,int categoryId) {
+    public CategoryResponseDTOAll update(CategoryRequestDTO categoryRequest, int categoryId) {
         Optional<CategoryModel> category = categoryRepository.findById(categoryId);
         if (category.isPresent()){
             CategoryModel categoryUpdate = category.get();
